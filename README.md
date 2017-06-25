@@ -1,15 +1,21 @@
 # Relative Date
 
-[![Build Status](https://travis-ci.org/wildlyinaccurate/relative-date.png?branch=master)](https://travis-ci.org/wildlyinaccurate/relative-date)
+[![Build Status](https://travis-ci.org/wildlyinaccurate/tiny-relative-date.png?branch=master)](https://travis-ci.org/wildlyinaccurate/tiny-relative-date)
 
 Tiny function that provides relative, human-readable dates.
 
+## Installation
+
+```
+npm install tiny-relative-date
+```
+
 ## Usage
 
-Initialise the relative-date module with a locale. See the [translations directory]('./translations') for a list of available locales.
+Initialise the tiny-relative-date module with a locale. See the [translations directory]('./translations') for a list of available locales.
 
 ```js
-import relativeDateFactory from 'relative-date'
+import relativeDateFactory from 'tiny-relative-date'
 
 const relativeDate = relativeDateFactory('en')
 ```
@@ -17,7 +23,7 @@ const relativeDate = relativeDateFactory('en')
 Or if you're not using ES modules:
 
 ```js
-const relativeDate = require('relative-date')('en')
+const relativeDate = require('tiny-relative-date')('en')
 ```
 
 The `relativeDate` function accepts date strings or `Date` objects.
@@ -41,8 +47,8 @@ relativeDate(date, now) // 'an hour ago'
 Contributions are welcome! Running this project locally requires Git and Node.js.
 
 ```
-git clone git@github.com:wildlyinaccurate/relative-date.git
-cd relative-date/
+git clone git@github.com:wildlyinaccurate/tiny-relative-date.git
+cd tiny-relative-date/
 npm install
 ```
 
