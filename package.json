@@ -4,6 +4,18 @@
   "description": "Tiny function that provides relative, human-readable dates.",
   "main": "lib/relative-date.js",
   "module": "src/relative-date.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "npm run eslint && npm run jasmine",
+    "eslint": "eslint --fix src/**/*.js",
+    "jasmine": "jasmine",
+    "prepublish": "npm run build"
+  },
+  "files": [
+    "lib/",
+    "src/",
+    "translations/"
+  ],
   "license": "MIT",
   "author": "Joseph Wynn <joseph@wildlyinaccurate.com> (https://wildlyinaccurate.com/)",
   "repository": {
@@ -22,12 +34,5 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "jasmine": "^2.6.0"
-  },
-  "scripts": {
-    "build": "babel src -d lib",
-    "test": "npm run eslint && npm run jasmine",
-    "eslint": "eslint --fix src/**/*.js",
-    "jasmine": "jasmine",
-    "prepublish": "npm run build"
   }
 }
