@@ -12,18 +12,10 @@ npm install tiny-relative-date
 
 ## Usage
 
-Initialise the tiny-relative-date module with a locale. See the [translations directory]('./translations') for a list of available locales.
+The module returns a `relativeDate` function with English translations by default.
 
 ```js
-import relativeDateFactory from 'tiny-relative-date'
-
-const relativeDate = relativeDateFactory('en')
-```
-
-Or if you're not using ES modules:
-
-```js
-const relativeDate = require('tiny-relative-date')('en')
+const relativeDate = require('tiny-relative-date')
 ```
 
 The `relativeDate` function accepts date strings or `Date` objects.
@@ -40,6 +32,30 @@ const now = new Date('2017-06-25 08:00:00')
 const date = new Date('2017-06-25 07:00:00')
 
 relativeDate(date, now) // 'an hour ago'
+```
+
+### Using a non-English locale
+
+The tiny-relative-date module can be initialised with a locale. See the [translations directory]('./translations') for a list of available locales.
+
+```js
+const relativeDateFactory = require('tiny-relative-date/lib/factory')
+const relativeDate = relativeDateFactory('de')
+
+relativeDate(new Date()) // 'gerade eben'
+```
+
+### Using a custom locale
+
+You can also use a completely custom locale by passing a translations object instead of a locale string. See the **Adding new locales** section below for a list of translation keys.
+
+```js
+const relativeDateFactory = require('tiny-relative-date/lib/factory')
+const relativeDate = relativeDateFactory({
+  just_now: 'now-ish'
+})
+
+relativeDate(new Date()) // 'now-ish'
 ```
 
 ## Contributing
