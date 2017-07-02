@@ -6,7 +6,7 @@ describe('relativeDate()', function() {
   const relativeDate = relativeDateFactory('en')
 
   it('Generates the correct response for past dates', () => {
-    expect(relativeDate('2017-09-07T12:00:00Z', NOW)).toEqual('just now')
+    expect(relativeDate(NOW, NOW)).toEqual('just now')
     expect(relativeDate('2017-09-07T11:59:31Z', NOW)).toEqual('just now')
     expect(relativeDate('2017-09-07T11:59:29Z', NOW)).toEqual('31 seconds ago')
     expect(relativeDate('2017-09-07T11:59:01Z', NOW)).toEqual('59 seconds ago')
