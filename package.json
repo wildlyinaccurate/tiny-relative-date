@@ -2,8 +2,8 @@
   "name": "tiny-relative-date",
   "version": "1.0.2",
   "description": "Tiny function that provides relative, human-readable dates.",
-  "main": "lib/relative-date.js",
-  "module": "src/relative-date.js",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "babel src -d lib",
     "test": "npm run eslint && npm run jasmine",

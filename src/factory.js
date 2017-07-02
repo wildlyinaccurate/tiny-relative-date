@@ -1,7 +1,17 @@
+const getTranslationsFor = (locale) => {
+  if (typeof locale === 'string') {
+    // Name of an existing locale
+    return require(`../translations/${locale}`)
+  }
+
+  // Custom translation object
+  return locale
+}
+
 const calculateDelta = (now, date) => Math.round(Math.abs(now - date) / 1000)
 
 export default function relativeDateFactory (locale) {
-  const translations = require(`../translations/${locale}`)
+  const translations = getTranslationsFor(locale)
 
   return function relativeDate (date, now = new Date()) {
     if (!(date instanceof Date)) {
