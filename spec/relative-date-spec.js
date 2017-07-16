@@ -1,5 +1,7 @@
 import relativeDate from '../src/index'
 import relativeDateFactory from '../src/factory'
+import enShortTranslations from '../translations/en-short'
+import deTranslations from '../translations/de'
 
 const NOW = new Date('2017-09-07T12:00:00Z')
 
@@ -62,7 +64,7 @@ describe('tiny-relative-date', () => {
   })
 
   describe('Constructing with the en-short locale', () => {
-    const relativeDateEnShort = relativeDateFactory('en-short')
+    const relativeDateEnShort = relativeDateFactory(enShortTranslations)
 
     it('Returns the correct relative string for the provided locale', () => {
       expect(relativeDateEnShort(NOW, NOW)).toEqual('now')
@@ -80,7 +82,7 @@ describe('tiny-relative-date', () => {
   })
 
   describe('Constructing with a provided locale', () => {
-    const relativeDateDe = relativeDateFactory('de')
+    const relativeDateDe = relativeDateFactory(deTranslations)
 
     it('Returns the correct relative string for the provided locale', () => {
       expect(relativeDateDe(NOW, NOW)).toEqual('gerade eben')

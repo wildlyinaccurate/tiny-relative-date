@@ -1,3 +1,4 @@
 import relativeDateFactory from './factory'
+import enTranslations from '../translations/en'
 
-export default relativeDateFactory('en')
+export default relativeDateFactory(enTranslations)

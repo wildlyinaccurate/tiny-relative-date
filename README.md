@@ -40,7 +40,8 @@ The tiny-relative-date module can be initialised with a locale. See the [transla
 
 ```js
 const relativeDateFactory = require('tiny-relative-date/lib/factory')
-const relativeDate = relativeDateFactory('de')
+const deTranslations = require('tiny-relative-date/translations/de')
+const relativeDate = relativeDateFactory(deTranslations)
 
 relativeDate(new Date()) // 'gerade eben'
 ```
