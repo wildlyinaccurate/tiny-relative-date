@@ -89,9 +89,9 @@ describe('tiny-relative-date', () => {
 
   describe('Constructing with a custom translation object', () => {
     const relativeDateCustom = relativeDateFactory({
-      just_now: 'now-ish',
-      hours_ago: '{{time}} hours in the past',
-      weeks_ago: (value) => `${value * 7} days ago`
+      justNow: 'now-ish',
+      hoursAgo: '{{time}} hours in the past',
+      weeksAgo: (value) => `${value * 7} days ago`
     })
 
     it('Returns the correct relative string for the custom locale', () => {

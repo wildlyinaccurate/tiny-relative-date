@@ -37,12 +37,12 @@ export default function relativeDateFactory (locale) {
     const translate = (translatePhrase, timeValue) => {
       let key
 
-      if (translatePhrase === 'just_now') {
+      if (translatePhrase === 'justNow') {
         key = translatePhrase
       } else if (now >= date) {
-        key = `${translatePhrase}_ago`
+        key = `${translatePhrase}Ago`
       } else {
-        key = `${translatePhrase}_from_now`
+        key = `${translatePhrase}FromNow`
       }
 
       const translation = translations[key]
@@ -56,46 +56,46 @@ export default function relativeDateFactory (locale) {
 
     switch (false) {
       case !(delta < 30):
-        return translate('just_now')
+        return translate('justNow')
 
       case !(delta < minute):
         return translate('seconds', delta)
 
       case !(delta < 2 * minute):
-        return translate('a_minute')
+        return translate('aMinute')
 
       case !(delta < hour):
         return translate('minutes', Math.floor(delta / minute))
 
       case Math.floor(delta / hour) !== 1:
-        return translate('an_hour')
+        return translate('anHour')
 
       case !(delta < day):
         return translate('hours', Math.floor(delta / hour))
 
       case !(delta < day * 2):
-        return translate('a_day')
+        return translate('aDay')
 
       case !(delta < week):
         return translate('days', Math.floor(delta / day))
 
       case Math.floor(delta / week) !== 1:
-        return translate('a_week')
+        return translate('aWeek')
 
       case !(delta < month):
         return translate('weeks', Math.floor(delta / week))
 
       case Math.floor(delta / month) !== 1:
-        return translate('a_month')
+        return translate('aMonth')
 
       case !(delta < year):
         return translate('months', Math.floor(delta / month))
 
       case Math.floor(delta / year) !== 1:
-        return translate('a_year')
+        return translate('aYear')
 
       default:
-        return translate('over_a_year')
+        return translate('overAYear')
     }
   }
 }
