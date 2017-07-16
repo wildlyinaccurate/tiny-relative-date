@@ -45,7 +45,13 @@ export default function relativeDateFactory (locale) {
         key = `${translatePhrase}_from_now`
       }
 
-      return translations[key].replace('{{time}}', timeValue)
+      const translation = translations[key]
+
+      if (typeof translation === 'function') {
+        return translation(timeValue)
+      }
+
+      return translation.replace('{{time}}', timeValue)
     }
 
     switch (false) {

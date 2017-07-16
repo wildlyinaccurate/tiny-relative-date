@@ -61,6 +61,24 @@ describe('tiny-relative-date', () => {
     })
   })
 
+  describe('Constructing with the en-short locale', () => {
+    const relativeDateEnShort = relativeDateFactory('en-short')
+
+    it('Returns the correct relative string for the provided locale', () => {
+      expect(relativeDateEnShort(NOW, NOW)).toEqual('now')
+      expect(relativeDateEnShort('2017-09-07T11:59:29Z', NOW)).toEqual('31s')
+      expect(relativeDateEnShort('2017-09-07T11:00:01Z', NOW)).toEqual('59m')
+      expect(relativeDateEnShort('2017-09-06T12:00:01Z', NOW)).toEqual('23h')
+      expect(relativeDateEnShort('2017-09-01', NOW)).toEqual('6d')
+      expect(relativeDateEnShort('2017-08-31', NOW)).toEqual('1w')
+      expect(relativeDateEnShort('2017-03-01', NOW)).toEqual('26w')
+      expect(relativeDateEnShort('2016-04-07', NOW)).toEqual('1y')
+      expect(relativeDateEnShort('2017-09-07T12:59:01Z', NOW)).toEqual('+59m')
+      expect(relativeDateEnShort('2017-09-14', NOW)).toEqual('+6d')
+      expect(relativeDateEnShort('2018-03-07T12:00:00Z', NOW)).toEqual('+26w')
+    })
+  })
+
   describe('Constructing with a provided locale', () => {
     const relativeDateDe = relativeDateFactory('de')
 
@@ -72,12 +90,17 @@ describe('tiny-relative-date', () => {
   describe('Constructing with a custom translation object', () => {
     const relativeDateCustom = relativeDateFactory({
       just_now: 'now-ish',
-      hours_ago: '{{time}} hours in the past'
+      hours_ago: '{{time}} hours in the past',
+      weeks_ago: (value) => `${value * 7} days ago`
     })
 
     it('Returns the correct relative string for the custom locale', () => {
       expect(relativeDateCustom(NOW, NOW)).toEqual('now-ish')
       expect(relativeDateCustom('2017-09-06T12:00:01Z', NOW)).toEqual('23 hours in the past')
+    })
+
+    it('Supports functions as translation values', () => {
+      expect(relativeDateCustom('2017-08-24T12:00:00Z', NOW)).toEqual('14 days ago')
     })
   })
 })
