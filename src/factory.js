@@ -1,4 +1,6 @@
-const calculateDelta = (now, date) => Math.round(Math.abs(now - date) / 1000)
+function calculateDelta(now, date){
+  return Math.round(Math.abs(now - date) / 1000)
+}
 
 export default function relativeDateFactory (translations) {
   return function relativeDate (date, now = new Date()) {
