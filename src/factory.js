@@ -18,7 +18,10 @@ export default function relativeDateFactory (translations) {
     delta = calculateDelta(now, date)
 
     if (delta > day && delta < week) {
-      date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
+      date.setUTCHours(0)
+      date.setUTCMinutes(0)
+      date.setUTCSeconds(0)
+      date.setUTCMilliseconds(0)
       delta = calculateDelta(now, date)
     }
 
