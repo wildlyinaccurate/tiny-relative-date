@@ -1,8 +1,10 @@
-# Relative Date
+<h1><sup><small>(Tiny)</small></sup> Relative Date</h1>
 
-[![Build Status](https://travis-ci.org/wildlyinaccurate/tiny-relative-date.png?branch=master)](https://travis-ci.org/wildlyinaccurate/tiny-relative-date)
+Tiny function that provides relative, localised, human-readable dates.
 
-Tiny function that provides relative, human-readable dates.
+![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/tiny-relative-date.svg?style=for-the-badge)
+![Monthly Downloads](https://img.shields.io/npm/dm/tiny-relative-date.svg?style=for-the-badge)
+![Build Status](https://img.shields.io/travis/wildlyinaccurate/tiny-relative-date.svg?style=for-the-badge)
 
 ## Installation
 
