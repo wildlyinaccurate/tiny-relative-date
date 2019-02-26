@@ -33,7 +33,7 @@ export default function relativeDateFactory (translations) {
       date = new Date(date)
     }
     
-    isBeforeNow = translateNow >= date
+    isBeforeNow = now >= date
     let delta = null
 
     delta = calculateDelta(now, date)
