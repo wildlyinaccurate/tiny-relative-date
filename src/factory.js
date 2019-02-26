@@ -7,13 +7,13 @@ const month = day * 30
 const year = day * 365
 
 export default function relativeDateFactory (translations) {
-  let translateNow;
+  let isBeforeNow
   const translate = (translatePhrase, timeValue) => {
     let key
 
     if (translatePhrase === 'justNow') {
       key = translatePhrase
-    } else if (translateNow >= date) {
+    } else if (isBeforeNow) {
       key = `${translatePhrase}Ago`
     } else {
       key = `${translatePhrase}FromNow`
@@ -28,13 +28,12 @@ export default function relativeDateFactory (translations) {
     return translation.replace('{{time}}', timeValue)
   }
     
-  return function relativeDate (date, now = new Date()) {    
-    translateNow = now;
-    
+  return function relativeDate (date, now = new Date()) {
     if (!(date instanceof Date)) {
       date = new Date(date)
     }
-
+    
+    isBeforeNow = translateNow >= date
     let delta = null
 
     delta = calculateDelta(now, date)
