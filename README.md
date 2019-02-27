@@ -38,7 +38,7 @@ relativeDate(date, now) // 'an hour ago'
 
 ### Using a non-English locale
 
-The tiny-relative-date module can be initialised with a locale. See the [translations directory]('./translations') for a list of available locales.
+The tiny-relative-date module can be initialised with a locale. See the [translations directory](./translations) for a list of available locales.
 
 ```js
 const relativeDateFactory = require('tiny-relative-date/lib/factory')
