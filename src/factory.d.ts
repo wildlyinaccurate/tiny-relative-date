@@ -1,4 +1,4 @@
-type Translation = string | (value: number, seconds: number) => string;
+type Translation = string | ((value: number, seconds: number) => string);
 
 type RelativeDateTranslations = {
   justNow: Translation;
