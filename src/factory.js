@@ -18,11 +18,18 @@ export default function relativeDateFactory (translations) {
     delta = calculateDelta(now, date)
 
     if (delta > day && delta < week) {
-      date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
+      date = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        0,
+        0,
+        0
+      )
       delta = calculateDelta(now, date)
     }
 
-    const translate = (translatePhrase, timeValue) => {
+    const translate = (translatePhrase, timeValue, rawValue) => {
       let key
 
       if (translatePhrase === 'justNow') {
@@ -36,7 +43,7 @@ export default function relativeDateFactory (translations) {
       const translation = translations[key]
 
       if (typeof translation === 'function') {
-        return translation(timeValue)
+        return translation(timeValue, rawValue)
       }
 
       return translation.replace('{{time}}', timeValue)
@@ -44,46 +51,46 @@ export default function relativeDateFactory (translations) {
 
     switch (false) {
       case !(delta < 30):
-        return translate('justNow')
+        return translate('justNow', delta, delta)
 
       case !(delta < minute):
-        return translate('seconds', delta)
+        return translate('seconds', delta, delta)
 
       case !(delta < 2 * minute):
-        return translate('aMinute')
+        return translate('aMinute', 1, delta)
 
       case !(delta < hour):
-        return translate('minutes', Math.floor(delta / minute))
+        return translate('minutes', Math.floor(delta / minute), delta)
 
       case Math.floor(delta / hour) !== 1:
-        return translate('anHour')
+        return translate('anHour', Math.floor(delta / minute), delta)
 
       case !(delta < day):
-        return translate('hours', Math.floor(delta / hour))
+        return translate('hours', Math.floor(delta / hour), delta)
 
       case !(delta < day * 2):
-        return translate('aDay')
+        return translate('aDay', 1, delta)
 
       case !(delta < week):
-        return translate('days', Math.floor(delta / day))
+        return translate('days', Math.floor(delta / day), delta)
 
       case Math.floor(delta / week) !== 1:
-        return translate('aWeek')
+        return translate('aWeek', 1, delta)
 
       case !(delta < month):
-        return translate('weeks', Math.floor(delta / week))
+        return translate('weeks', Math.floor(delta / week), delta)
 
       case Math.floor(delta / month) !== 1:
-        return translate('aMonth')
+        return translate('aMonth', 1, delta)
 
       case !(delta < year):
-        return translate('months', Math.floor(delta / month))
+        return translate('months', Math.floor(delta / month), delta)
 
       case Math.floor(delta / year) !== 1:
-        return translate('aYear')
+        return translate('aYear', 1, delta)
 
       default:
-        return translate('overAYear')
+        return translate('overAYear', Math.floor(delta / year), delta)
     }
   }
 }

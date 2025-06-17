@@ -5,10 +5,10 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "scripts": {
-    "build": "babel src -d lib",
+    "build": "babel src -d lib && cp src/*.d.ts lib/",
     "test": "npm run eslint && npm run jasmine",
-    "eslint": "eslint --fix src/**/*.js",
-    "jasmine": "jasmine",
+    "eslint": "eslint --fix src/**/*.js spec/*.js",
+    "jasmine": "TZ=UTC jasmine",
     "prepublish": "npm run build"
   },
   "files": [
